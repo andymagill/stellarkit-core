@@ -33,10 +33,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Create Release Pull Request or Publish to npm
+      - name: Create Release Pull Request
         id: changesets
         uses: changesets/action@v1
         with:
-          publish: pnpm publish-packages
           commit: "chore(release): version packages"
           title: "chore(release): version packages"
