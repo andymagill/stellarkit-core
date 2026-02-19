@@ -20,7 +20,7 @@
   - Format: `["esm"]`
   - `dts: true`
   - `clean: true`
-- [ ] Install dev dependencies: `astro`, `tsup`, `typescript`
+- [ ] Run `pnpm install` to install dev dependencies
 
 ---
 
@@ -66,5 +66,5 @@
 
 ### 1.5 Verification
 
-- [ ] Run `npm run build` — emits `dist/index.js` and `dist/index.d.ts` with zero errors
+- [ ] Run `pnpm build` — emits `dist/index.js` and `dist/index.d.ts` with zero errors
 - [ ] Run `npx tsc --noEmit` — no type errors

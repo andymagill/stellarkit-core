@@ -1,0 +1,48 @@
+---
+import { submitForm } from '../utils/forms';
+
+export interface Props {
+  webhookUrl: string;
+}
+
+const { webhookUrl } = Astro.props as Props;
+---
+
+<form class="stellarkit-form" data-webhook-url={webhookUrl}>
+  <slot />
+</form>
+
+<script define:vars={{ webhookUrl }}>
+  const forms = document.querySelectorAll('.stellarkit-form');
+
+  forms.forEach((form) => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+
+      try {
+        const result = await fetch(webhookUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        }).then((res) => res.json());
+
+        if (result.ok ?? result.success) {
+          form.dispatchEvent(
+            new CustomEvent('formSuccess', { detail: result })
+          );
+        } else {
+          form.dispatchEvent(
+            new CustomEvent('formError', { detail: result?.error || 'Unknown error' })
+          );
+        }
+      } catch (error) {
+        form.dispatchEvent(
+          new CustomEvent('formError', { detail: String(error) })
+        );
+      }
+    });
+  });
+</script>

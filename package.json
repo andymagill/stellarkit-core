@@ -1,0 +1,48 @@
+{
+  "name": "@stellarkit/core",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Core package for StellarKit — base layout, SEO utilities, analytics injection, and form handling.",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./components/*": {
+      "types": "./src/components/*.astro",
+      "import": "./src/components/*.astro"
+    },
+    "./utils/*": {
+      "types": "./dist/utils/*.d.ts",
+      "import": "./dist/utils/*.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch"
+  },
+  "peerDependencies": {
+    "astro": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.3.0",
+    "astro": "^5.0.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.0.0"
+  },
+  "keywords": [
+    "astro",
+    "seo",
+    "marketing",
+    "forms",
+    "analytics"
+  ],
+  "author": "StellarKit Contributors",
+  "license": "MIT"
+}

@@ -29,7 +29,7 @@ The infrastructure layer for StellarKit marketing sites. Provides an Astro Integ
 ### From npm (published releases)
 
 ```bash
-npm install @stellarkit/core
+pnpm add @stellarkit/core
 ```
 
 ### Local development (file path)
@@ -42,7 +42,7 @@ In `stellarkit-site/package.json`:
 }
 ```
 
-Then run `npm install` in `stellarkit-site`.
+Then run `pnpm install` in `stellarkit-site`.
 
 ---
 
@@ -168,8 +168,8 @@ Sites should pin or range versions and upgrade intentionally.
 
 ```bash
 cd stellarkit-core
-npm install
-npm run build        # emits dist/index.js + dist/index.d.ts via tsup
+pnpm install
+pnpm build          # emits dist/index.js + dist/index.d.ts via tsup
 ```
 
-To test changes against a local site, the `file:` path dependency in `stellarkit-site` will automatically pick up the latest build after `npm install` is re-run in `stellarkit-site`.
+To test changes against a local site, the `file:` path dependency in `stellarkit-site` will automatically pick up the latest build after `pnpm install` is re-run in `stellarkit-site`.
