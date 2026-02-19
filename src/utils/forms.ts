@@ -13,13 +13,13 @@ export interface SubmitFormResult {
  */
 export async function submitForm(
   url: string,
-  data: Record<string, any>
+  data: Record<string, unknown>
 ): Promise<SubmitFormResult> {
   try {
     const response = await fetch(url, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
     });
@@ -31,12 +31,12 @@ export async function submitForm(
       };
     }
 
-    const result = await response.json();
+    await response.json();
     return { ok: true };
   } catch (error) {
     return {
       ok: false,
-      error: error instanceof Error ? error.message : 'Unknown error',
+      error: error instanceof Error ? error.message : "Unknown error",
     };
   }
 }

@@ -17,13 +17,13 @@ export interface SeoProps {
  */
 export function defineSeo(props: SeoProps): SeoProps {
   if (!props.title) {
-    throw new Error('SEO: title is required');
+    throw new Error("SEO: title is required");
   }
   if (!props.description) {
-    throw new Error('SEO: description is required');
+    throw new Error("SEO: description is required");
   }
   if (!props.canonical) {
-    throw new Error('SEO: canonical is required');
+    throw new Error("SEO: canonical is required");
   }
 
   return props;
