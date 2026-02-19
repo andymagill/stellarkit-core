@@ -1,4 +1,4 @@
-# @stellar-kit/core
+# @stellarkit/core
 
 The infrastructure layer for StellarKit marketing sites. Provides an Astro Integration, base layout components, SEO utilities, form handling, and analytics injection — so individual site repos never have to re-implement these concerns.
 
@@ -65,7 +65,7 @@ See [stellarkit-site/README.md](../stellarkit-site/README.md) for a complete sty
 ### From npm (published releases)
 
 ```bash
-pnpm add @stellar-kit/core
+pnpm add @stellarkit/core
 ```
 
 ### Local development (file path)
@@ -74,7 +74,7 @@ In `stellarkit-site/package.json`:
 
 ```json
 "dependencies": {
-  "@stellar-kit/core": "file:../stellarkit-core"
+  "@stellarkit/core": "file:../stellarkit-core"
 }
 ```
 
@@ -88,7 +88,7 @@ In `astro.config.mjs`:
 
 ```js
 import { defineConfig } from 'astro/config';
-import stellarKitCore from '@stellar-kit/core';
+import stellarKitCore from '@stellarkit/core';
 
 export default defineConfig({
   integrations: [stellarKitCore()],
@@ -103,8 +103,8 @@ export default defineConfig({
 
 ```astro
 ---
-import BaseLayout from '@stellar-kit/core/components/BaseLayout.astro';
-import { defineSeo } from '@stellar-kit/core/utils/seo';
+import BaseLayout from '@stellarkit/core/components/BaseLayout.astro';
+import { defineSeo } from '@stellarkit/core/utils/seo;
 
 const seo = defineSeo({
   title: 'My Site',
@@ -123,7 +123,7 @@ const seo = defineSeo({
 
 ```astro
 ---
-import SEO from '@stellar-kit/core/components/SEO.astro';
+import SEO from '@stellarkit/core/components/SEO.astro';
 ---
 <SEO title="Page Title" description="..." canonical="https://..." />
 ```
@@ -132,7 +132,7 @@ import SEO from '@stellar-kit/core/components/SEO.astro';
 
 ```astro
 ---
-import FormWrapper from '@stellar-kit/core/components/FormWrapper.astro';
+import FormWrapper from '@stellarkit/core/components/FormWrapper.astro';
 ---
 <FormWrapper webhookUrl="https://hooks.example.com/subscribe">
   <input name="email" type="email" required />
@@ -147,7 +147,7 @@ import FormWrapper from '@stellar-kit/core/components/FormWrapper.astro';
 ### defineSeo()
 
 ```ts
-import { defineSeo } from '@stellar-kit/core/utils/seo';
+import { defineSeo } from '@stellarkit/core/utils/seo';
 
 const seo = defineSeo({
   title: 'Page Title',        // required
@@ -163,7 +163,7 @@ const seo = defineSeo({
 ### submitForm()
 
 ```ts
-import { submitForm } from '@stellar-kit/core/utils/forms';
+import { submitForm } from '@stellarkit/core/utils/forms';
 
 const result = await submitForm('https://hooks.example.com/...', {
   email: 'user@example.com',

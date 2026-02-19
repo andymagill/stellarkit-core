@@ -2,14 +2,14 @@ import type { AstroIntegration } from "astro";
 
 export default function stellarKitCore(): AstroIntegration {
   return {
-    name: "@stellar-kit/core",
+    name: "@stellarkit/core",
     hooks: {
       "astro:config:setup": ({ injectScript, logger }) => {
         const gtmId = process.env.PUBLIC_GTM_ID;
 
         if (!gtmId) {
           logger.warn(
-            "@stellar-kit/core: PUBLIC_GTM_ID environment variable is not set. " +
+            "@stellarkit/core: PUBLIC_GTM_ID environment variable is not set. " +
               "Google Tag Manager script will not be injected. " +
               "Set PUBLIC_GTM_ID in your environment to enable GTM tracking."
           );

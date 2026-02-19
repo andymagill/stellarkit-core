@@ -2,17 +2,19 @@
 
 ## Overview
 
-`@stellar-kit/core` is a versioned npm package providing reusable Astro infrastructure (components, utilities, and integration hooks). This guide walks you through:
+This guide walks you through publishing **your own fork of `@stellarkit/core`** to npm under your organization. You'll set up:
 
-1. Creating an npm account and organization
-2. Bootstrapping the package namespace with OIDC support
-3. Configuring secure, token-free publishing via GitHub Actions
-4. Publishing the first release and subsequent updates via changesets
+1. Your npm organization (e.g., `@your-org`, in this example `@stellarkit`)
+2. OIDC trusted publishing for secure, token-free deployments via GitHub Actions
+3. Automated versioning and publishing via Changesets
+4. Your first release and future updates
+
+**Note:** This is a forked version of `@stellarkit/core`. If you're installing the official package, use `pnpm add @stellarkit/core` from the public npm registry instead.
 
 ## Prerequisites
 
 - npm account (free tier)
-- npm organization matching the package scope (`stellar-kit` for `@stellar-kit/core`)
+- npm organization matching the package scope (`stellarkit` for `@stellarkit/core`)
 - GitHub repository with push access
 - Local: Node.js, pnpm, and git
 
@@ -29,7 +31,7 @@
 ### Create an npm Organization
 
 1. Go to https://www.npmjs.com/org/create
-2. Organization name: `stellar-kit` (must match the scope in `@stellar-kit/core`)
+2. Organization name: `stellarkit` (must match the scope in `@stellarkit/core`)
 3. Choose "Free" tier
 4. Add yourself as owner and verify ownership
 
@@ -53,7 +55,7 @@ Unlike PyPI, npm doesn't allow OIDC configuration for packages that don't yet ex
 npm login
 
 # Bootstrap the package
-npx setup-npm-trusted-publish @stellar-kit/core
+npx setup-npm-trusted-publish @stellarkit/core
 ```
 
 The tool will:
@@ -61,10 +63,10 @@ The tool will:
 2. Output a direct URL to configure OIDC:
    ```
    🔗 View your package at:
-   https://www.npmjs.com/package/@stellar-kit/core
+   https://www.npmjs.com/package/@stellarkit/core
 
    Next steps:
-   1. Go to https://www.npmjs.com/package/@stellar-kit/core/access
+   1. Go to https://www.npmjs.com/package/@stellarkit/core/access
    2. Configure OIDC trusted publishing
    3. Set up your CI/CD workflow to publish with OIDC
    ```
@@ -79,7 +81,7 @@ GitHub Actions will sign OIDC tokens for your repository. npm needs to trust tho
 
 ### Create OIDC Provider Configuration
 
-1. Visit the URL from Step 2: `https://www.npmjs.com/package/@stellar-kit/core/access`
+1. Visit the URL from Step 2: `https://www.npmjs.com/package/@stellarkit/core/access`
 2. Click **Publishing** tab
 3. Under **"Trusted Publishing"**, click **"Add a provider configuration"**
 4. Select provider: **GitHub Actions**
@@ -104,7 +106,7 @@ Your GitHub Actions workflows are pre-configured with OIDC support:
 
 ## Step 4: Publish the First Release
 
-The placeholder from Step 2 reserves the namespace. Now publish the real `@stellar-kit/core@0.1.0` to replace it.
+The placeholder from Step 2 reserves the namespace. Now publish the real `@stellarkit/core@0.1.0` to replace it.
 
 ### Option A: Create a Changeset and Trigger CI (Recommended for Future Releases)
 
@@ -115,13 +117,13 @@ cd stellarkit-core
 pnpm changeset
 
 # Follow prompts:
-# - Select affected packages: @stellar-kit/core
+# - Select affected packages: @stellarkit/core
 # - Select bump type: major (or patch if starting below v1.0.0)
 # - Write summary: "Initial release with BaseLayout, SEO, and form utilities"
 
 # Commit and push
 git add .changeset
-git commit -m "chore(changeset): initial release of @stellar-kit/core"
+git commit -m "chore(changeset): initial release of @stellarkit/core"
 git push origin main
 ```
 
@@ -189,12 +191,12 @@ Once configured, releases are fully automated:
 | OIDC provider not configured | Verify npm org settings → Publishing → Trusted Publishing has GitHub listed |
 | Subject condition mismatch | Check condition matches your repo/branch: `repo:andymagill/stellarkit-core:ref:refs/heads/main` |
 | Workflow missing token permission | Ensure `publish.yml` has `permissions: { id-token: write }` |
-| Package doesn't exist yet | Run `setup-npm-trusted-publish @stellar-kit/core` first |
+| Package doesn't exist yet | Run `setup-npm-trusted-publish @stellarkit/core` first |
 
 ### "Package Not Found" or Namespace Error
 
-- Verify npm organization exists: https://www.npmjs.com/org/stellar-kit
-- Verify organization matches package scope: `@stellar-kit/core` → org name is `stellar-kit`
+- Verify npm organization exists: https://www.npmjs.com/org/stellarkit
+- Verify organization matches package scope: `@stellarkit/core` → org name is `stellarkit`
 - Run `npm whoami` locally to confirm authentication
 
 ### Workflow Debugging
