@@ -53,9 +53,9 @@
 
 ### 3.5 Access Control ⏳ MANUAL SETUP REQUIRED
 
-- [ ] Configure NPM_TOKEN in GitHub Actions secrets
-  - See: PHASE_3_SETUP.md for detailed instructions
-- [ ] Verify only main branch can trigger publish workflow
+- [ ] Bootstrap package and configure npm OIDC trusted publishing
+  - See: [SETUP.md](./SETUP.md) for detailed instructions
+- [ ] Verify GitHub repository subject condition is configured in npm org settings
 
 ---
 

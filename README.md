@@ -134,7 +134,7 @@ import SEO from '@stellar-kit/core/components/SEO.astro';
 ---
 import FormWrapper from '@stellar-kit/core/components/FormWrapper.astro';
 ---
-<FormWrapper webhookUrl={import.meta.env.FORM_WEBHOOK_URL}>
+<FormWrapper webhookUrl="https://hooks.example.com/subscribe">
   <input name="email" type="email" required />
   <button type="submit">Subscribe</button>
 </FormWrapper>
