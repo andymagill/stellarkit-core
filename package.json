@@ -1,6 +1,6 @@
 {
   "name": "@stellarkit/core",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "description": "Core package for StellarKit — base layout, SEO utilities, analytics injection, and form handling.",
   "main": "./dist/index.js",
