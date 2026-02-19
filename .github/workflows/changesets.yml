@@ -42,18 +42,3 @@ jobs:
           title: "chore(release): version packages"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Comment PR with version info
-        if: steps.changesets.outputs.published == 'false'
-        uses: actions/github-script@v6
-        with:
-          script: |
-            const fs = require('fs');
-            const changesets = require('@changesets/read');
-            
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: '✅ Changesets have been generated. Merge when ready to version and publish.'
-            });
