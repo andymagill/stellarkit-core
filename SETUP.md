@@ -100,20 +100,21 @@ GitHub Actions will sign OIDC tokens for your repository. npm needs to trust tho
 2. Click **Publishing** tab
 3. Under **"Trusted Publishing"**, click **"Add a provider configuration"**
 4. Select provider: **GitHub Actions**
-5. Configure the subject condition:
-   - `repo:andymagill/stellarkit-core:ref:refs/heads/main`
-   - This limits publishing to your `main` branch only
-6. Click **Create**
+5. Fill in the provider details:
+   - **Organization or user:** `andymagill`
+   - **Repository:** `stellarkit-core`
+   - **Workflow filename:** `publish.yml`
+   - **Environment name:** (leave empty—branch restriction is handled by the workflow)
+6. Click **Save changes** (or **Create**)
 
-**Alternative subject conditions** (if publishing from multiple branches):
-- `repo:andymagill/stellarkit-core:*` — Allow publishing from any branch
-- `repo:andymagill/stellarkit-core:environment:release` — Require an environment named "release"
+**Note:** Branch restrictions are controlled by your workflow file (`publish.yml`), not by npm settings. Your workflow is already configured to publish only from the `main` branch via the `branches: [main]` trigger and the `if: github.ref == 'refs/heads/main'` condition.
 
 ### Verify Workflow Configuration
 
 Your GitHub Actions workflows are pre-configured with OIDC support:
 
 - **`publish.yml`** has `permissions: { id-token: write }` — generates OIDC tokens
+- **`publish.yml`** has `on: push: branches: [main]` — only triggers on main branch
 - **`setup-node@v4`** with `registry-url: https://registry.npmjs.org/` — activates npm OIDC
 - **No `NPM_TOKEN` secret is stored** — GitHub Actions uses OIDC automatically
 
@@ -204,7 +205,7 @@ Once configured, releases are fully automated:
 | Issue | Fix |
 |-------|-----|
 | OIDC provider not configured | Verify npm org settings → Publishing → Trusted Publishing has GitHub listed |
-| Subject condition mismatch | Check condition matches your repo/branch: `repo:andymagill/stellarkit-core:ref:refs/heads/main` |
+| Organization/repository mismatch | Check the provider config matches: org=`andymagill`, repo=`stellarkit-core`, workflow=`publish.yml` |
 | Workflow missing token permission | Ensure `publish.yml` has `permissions: { id-token: write }` |
 | Package doesn't exist yet | Run `setup-npm-trusted-publish @stellarkit/core` first |
 
