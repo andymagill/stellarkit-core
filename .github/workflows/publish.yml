@@ -35,6 +35,12 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Check npm config
+        run: |
+          npm config list
+          echo "---"
+          cat ~/.npmrc || echo "No .npmrc file"
+
       - name: Build
         run: pnpm build
 
