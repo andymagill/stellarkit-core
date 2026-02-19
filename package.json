@@ -10,9 +10,12 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     },
-    "./components/*": {
-      "types": "./src/components/*.astro",
-      "import": "./src/components/*.astro"
+    "./src/*": {
+      "import": "./src/*"
+    },
+    "./dist/*": {
+      "types": "./dist/*.d.ts",
+      "import": "./dist/*.js"
     },
     "./utils/*": {
       "types": "./dist/utils/*.d.ts",
