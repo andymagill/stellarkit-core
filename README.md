@@ -24,6 +24,42 @@ The infrastructure layer for StellarKit marketing sites. Provides an Astro Integ
 
 ---
 
+## Styling
+
+**Core provides no styles.** Sites own all styling and visual identity.
+
+The reference site implementation [stellarkit-site](../stellarkit-site) uses **Tailwind CSS v4** for styling. This is the recommended approach for new sites:
+
+```bash
+pnpm add -D tailwindcss @tailwindcss/vite
+```
+
+Configure in `astro.config.mjs`:
+
+```js
+import tailwindcss from '@tailwindcss/vite';
+
+export default defineConfig({
+  vite: {
+    plugins: [tailwindcss()],
+  },
+});
+```
+
+Then in `src/styles/global.css`:
+
+```css
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #667eea;
+  --color-text: #2d3748;
+  /* ...more tokens */
+}
+```
+
+See [stellarkit-site/README.md](../stellarkit-site/README.md) for a complete styling reference implementation.
+
 ## Installation
 
 ### From npm (published releases)
