@@ -2,7 +2,9 @@
 
 ## Phase 1: Package Scaffold
 
-- [ ] Initialize `package.json`
+**Build this first** — The core package must be published before the site can properly install it.
+
+### 1.1 Initialize package.json
   - `name`: `@stellarkit/core`
   - `version`: `0.1.0`
   - `type`: `module`
@@ -22,7 +24,7 @@
 
 ---
 
-## Phase 1: Integration Entry Point
+### 1.2 Integration Entry Point
 
 - [ ] Create `src/index.ts` — Astro Integration
   - Export default `stellarKitCore()` function returning an `AstroIntegration`
@@ -32,7 +34,7 @@
 
 ---
 
-## Phase 1: Components
+### 1.3 Components
 
 - [ ] Create `src/components/SEO.astro`
   - Props: `title` (required), `description` (required), `canonical` (required), `og.image`, `og.type`
@@ -51,7 +53,7 @@
 
 ---
 
-## Phase 1: Utilities
+### 1.4 Utilities
 
 - [ ] Create `src/utils/seo.ts`
   - Export `SeoProps` TypeScript interface (title, description, canonical, og?)
@@ -62,7 +64,7 @@
 
 ---
 
-## Phase 1: Verification
+### 1.5 Verification
 
 - [ ] Run `npm run build` — emits `dist/index.js` and `dist/index.d.ts` with zero errors
 - [ ] Run `npx tsc --noEmit` — no type errors
