@@ -3,7 +3,7 @@
 ## Phase 1: Package Scaffold ✅ COMPLETED
 
 **Deliverables:**
-- `@stellarkit/core@0.1.0` — Astro Integration with GTM injection
+- `@stellar-kit/core@0.1.0` — Astro Integration with GTM injection
 - Components: `SEO.astro`, `BaseLayout.astro`, `FormWrapper.astro`
 - Utilities: `defineSeo()`, `submitForm()`
 - Build: `pnpm build` produces `dist/index.js` and `dist/index.d.ts`
@@ -63,7 +63,7 @@
 
 ### 4.1 Developer Onboarding
 
-- [ ] Create `CONTRIBUTING.md` — How to contribute to @stellarkit/core
+- [ ] Create `CONTRIBUTING.md` — How to contribute to @stellar-kit/core
   - Setup instructions
   - Branch naming conventions
   - Pull request process
