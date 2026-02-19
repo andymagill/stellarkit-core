@@ -1,15 +1,5 @@
 # stellarkit-core — Implementation Tasks
 
-## Phase 0: Repository Setup
-
-- [ ] Run `git init` in `stellarkit-core/`
-- [ ] Create `.gitignore` (Node)
-- [ ] Initial commit with `README.md` and `TASKS.md`
-- [ ] Create `stellarkit-core` repository on GitHub
-- [ ] Add GitHub remote and push `main` branch
-
----
-
 ## Phase 1: Package Scaffold
 
 - [ ] Initialize `package.json`
