@@ -48,11 +48,26 @@ Unlike PyPI, npm doesn't allow OIDC configuration for packages that don't yet ex
 - Publishing it with a clear README stating it's for OIDC setup only
 - Providing a direct link to configure OIDC on npm
 
+### Create an Automation Token
+
+Before running the bootstrap tool, you need an npm Automation token with the correct permissions:
+
+1. Go to https://www.npmjs.com/settings/tokens
+2. Click **"Generate New Token"**
+3. Select **"Automation"** (not "Granular Access Token")
+4. **Important:** Ensure these settings are enabled:
+   - ✅ **Package permissions:** All package-level permissions (includes publish)
+   - ✅ **Bypass 2FA when using this token** — Must be checked if you have 2FA enabled
+5. Copy the entire token (they're long, make sure you get all of it)
+
 ### Run the Tool
 
 ```bash
-# Make sure you're logged into npm locally
-npm login
+# Set the automation token in npm config
+npm config set //registry.npmjs.org/:_authToken=YOUR_TOKEN_HERE
+
+# Verify authentication
+npm whoami
 
 # Bootstrap the package
 npx setup-npm-trusted-publish @stellarkit/core
@@ -198,6 +213,24 @@ Once configured, releases are fully automated:
 - Verify npm organization exists: https://www.npmjs.com/org/stellarkit
 - Verify organization matches package scope: `@stellarkit/core` → org name is `stellarkit`
 - Run `npm whoami` locally to confirm authentication
+
+### npm Token Issues During Bootstrap
+
+**"403 Forbidden - Two-factor authentication required"**
+
+Your automation token is missing required permissions or 2FA bypass. Create a new token from https://www.npmjs.com/settings/tokens:
+- Ensure **"Automation"** type is selected
+- Enable **all package-level permissions** (required for publishing)
+- Enable **"Bypass 2FA when using this token"** checkbox
+- Copy the entire token (automation tokens are quite long)
+
+```bash
+npm config set //registry.npmjs.org/:_authToken=YOUR_NEW_TOKEN_HERE
+npm whoami  # Verify it works
+```
+
+**"404 Not Found"** during bootstrap with valid auth token:
+- Token may have incomplete permissions. Delete the token and create a new Automation token with all permissions enabled.
 
 ### Workflow Debugging
 
